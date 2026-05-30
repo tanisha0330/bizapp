@@ -94,27 +94,13 @@ If using the standard Node.js server:
    ```bash
    cp .env.example .env
    ```
-3. Open `.env` and fill in your credentials:
+3. Open `.env.example` and fill in your credentials:
    - `META_APP_ID`: Your Meta App ID (from Facebook Developer Dashboard).
    - `META_APP_SECRET`: Your Meta App Secret.
 
-### 2. Cloudflare Workers Backend (`/backend-cf`)
-If you are using the serverless Cloudflare Workers backend:
-1. Navigate to the `backend-cf/` directory.
-2. API keys are stored securely using Cloudflare Secrets. You must set them via the Wrangler CLI:
-   ```bash
-   npx wrangler secret put META_APP_ID
-   npx wrangler secret put META_APP_SECRET
-   npx wrangler secret put JWT_SECRET
-   npx wrangler secret put TOKEN_ENCRYPTION_KEY
-   npx wrangler secret put META_WEBHOOK_VERIFY_TOKEN
-   ```
-   *(You will be prompted to paste the value for each secret in the terminal).*
 
-### 3. Frontend App (`app.json`)
-For Facebook OAuth to work correctly in the mobile app, ensure your Facebook App ID is configured in `app.json` (at the root of the project):
-- Update `facebookAppId` and `facebookScheme` (format: `fb<YOUR_APP_ID>`) with your specific Meta App credentials.
 
+Note : add your gemini api key in semgrep.txt in the [REDACTED_KEY] placeholder
 ## Tech Stack
 
 -   **Framework**: Expo (React Native)
