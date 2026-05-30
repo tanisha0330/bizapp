@@ -11,23 +11,77 @@ A React Native app (Expo + TypeScript) for creating and managing ads, built with
 - **Profile**: Edit profile, logout, settings.
 - **Persistence**: User session and ads are saved locally.
 
-## Setup & Run
+## Requirements
 
-1.  **Install Dependencies**:
-    ```bash
-    cd biz499
-    npm install
-    ```
+Please see the [requirements.txt](./requirements.txt) file in the root of the project for a complete list of necessary software and environment prerequisites to run and build this app.
 
-2.  **Start the Server**:
+## How to Use the App
+
+First, install the project dependencies:
+```bash
+npm install
+```
+
+There are two primary ways to run and test the app:
+
+### 1. Using Expo Go (For Local Development)
+
+This is the fastest way to run the app during development.
+
+1.  **Start the Expo Development Server**:
     ```bash
     npx expo start
     ```
-
-3.  **Run on Device/Simulator**:
+2.  **Run on a Physical Device**:
+    -   **Important**: Ensure that both your development machine (PC/Mac) and your mobile device are connected to the **SAME Wi-Fi/Internet network**. If they are on different networks, the Expo Go app will not be able to connect to the local server.
+    -   Download the **Expo Go** app on your iOS or Android device.
+    -   Scan the QR code shown in the terminal (use the Camera app on iOS, or the Expo Go app's scanner on Android).
+3.  **Run on a Simulator/Emulator**:
     -   Press `i` for iOS Simulator.
     -   Press `a` for Android Emulator.
-    -   Scan QR code with Expo Go app on physical device.
+
+### 2. By Building the App (For Production/Standalone Testing)
+
+This method creates a standalone native binary (`.apk`, `.aab`, or `.ipa`) that you can install directly on a device without needing the Expo Go app.
+
+1.  **Install EAS CLI**:
+    ```bash
+    npm install -g eas-cli
+    ```
+2.  **Login and Configure**:
+    ```bash
+    eas login
+    eas build:configure
+    ```
+3.  **Create a Build**:
+    -   For **Android** (creates a build for direct installation or Play Store):
+        ```bash
+        eas build --platform android --profile preview
+        ```
+    -   For **iOS** (requires an Apple Developer account):
+        ```bash
+        eas build --platform ios --profile preview
+        ```
+4.  **Install the Build**:
+    -   Once the build completes, EAS will provide a link to download and install the standalone app directly on your device.
+
+### 3. Running Locally via USB (Native Build)
+
+If you want to build and install the native app directly to a connected physical device (via USB) or an emulator without using EAS Cloud:
+
+1.  **For Android**:
+    -   Ensure your Android device is connected via USB and **USB Debugging** is enabled in Developer Options.
+    -   Run the following command:
+        ```bash
+        npx expo run:android
+        ```
+2.  **For iOS** (Mac only):
+    -   Ensure your iPhone is connected via USB.
+    -   Run the following command:
+        ```bash
+        npx expo run:ios
+        ```
+    *(Note: This requires Android Studio/SDK for Android, and Xcode for iOS).*
 
 ## Tech Stack
 

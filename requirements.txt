@@ -1,0 +1,8 @@
+Node.js (v18 or higher)
+npm (Node Package Manager) or Yarn
+Expo CLI (optional, can be run via npx)
+Expo Go App (for testing on a physical mobile device)
+Android Studio (Optional: for Android Emulator & local builds)
+Xcode (Optional: Mac only, for iOS Simulator & local builds)
+EAS CLI (Optional: for cloud builds, install via `npm install -g eas-cli`)
+Same Wi-Fi Network (Required for Expo Go to communicate with the development server on your PC)
