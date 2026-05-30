@@ -1,0 +1,60 @@
+name = "biz499-api"
+main = "src/index.ts"
+compatibility_date = "2024-06-01"
+
+# Workers AI (free image generation)
+[ai]
+binding = "AI"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "biz499-db"
+database_id = "ec9eacf1-9a72-479c-97ad-88c6466f7d88"
+
+# R2 Bucket for creatives
+[[r2_buckets]]
+binding = "CREATIVES_BUCKET"
+bucket_name = "biz499-creatives"
+
+# KV Namespace for caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "2f7891bf54a64da0b02e7e8addcf03e8"
+
+# Queues - Requires Workers Paid plan ($5/mo)
+# Uncomment these when you upgrade to paid plan:
+# [[queues.producers]]
+# binding = "CAMPAIGN_QUEUE"
+# queue = "biz499-campaign-queue"
+#
+# [[queues.producers]]
+# binding = "ANALYTICS_QUEUE"
+# queue = "biz499-analytics-queue"
+#
+# [[queues.consumers]]
+# queue = "biz499-campaign-queue"
+# max_batch_size = 5
+# max_batch_timeout = 30
+#
+# [[queues.consumers]]
+# queue = "biz499-analytics-queue"
+# max_batch_size = 10
+# max_batch_timeout = 60
+
+# Environment variables (non-secret)
+[vars]
+ENVIRONMENT = "production"
+GRAPH_API_VERSION = "v19.0"
+PHONE_EMAIL_CLIENT_ID = "18972046343814697886"
+
+# Cron trigger - lead sync every 15 minutes + daily cleanup at 2 AM UTC
+[triggers]
+crons = ["*/15 * * * *", "0 2 * * *"]
+
+# Secrets (set via: wrangler secret put <NAME>)
+# META_APP_ID
+# META_APP_SECRET
+# JWT_SECRET
+# TOKEN_ENCRYPTION_KEY
+# META_WEBHOOK_VERIFY_TOKEN   ← set this, then register webhook in Meta Developer Dashboard

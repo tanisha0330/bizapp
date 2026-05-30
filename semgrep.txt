@@ -1,0 +1,66 @@
+                   
+                   
+┌─────────────────┐
+│ 6 Code Findings │
+└─────────────────┘
+                                                           
+  [36m[22m[24m  backend-cf/src/queues/campaign-launch.ts[0m
+     ❱ [1mjavascript.lang.security.audit.unsafe-formatstring.unsafe-formatstring[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Detected string concatenation with a non-literal variable in a util.format / console.log function.
+          If an attacker injects a format specifier in the string, it will forge the log message. Try to use
+          constant values for the format string.                                                            
+          Details: https://sg.run/7Y5R                                                                      
+                                                                                                            
+           39┆ console.error(`Campaign queue error [${type}]:`, err);
+                                    
+  [36m[22m[24m  backend/server.js[0m
+     ❱ [1mjavascript.express.security.audit.express-check-csurf-middleware-usage.express-check-csurf-middleware-usage[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          A CSRF middleware was not detected in your express application. Ensure you are either using one such
+          as `csurf` or `csrf` (see rule references) and/or you are properly doing CSRF validation in your    
+          routes with a token or cookies.                                                                     
+          Details: https://sg.run/BxzR                                                                        
+                                                                                                              
+            6┆ const app = express();
+                                              
+  [36m[22m[24m  backend/utils/encryption.js[0m
+   ❯❯❱ [1mjavascript.node-crypto.security.gcm-no-tag-length.gcm-no-tag-length[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          The call to 'createDecipheriv' with the Galois Counter Mode (GCM) mode of operation is missing an 
+          expected authentication tag length. If the expected authentication tag length is not specified or 
+          otherwise checked, the application might be tricked into verifying a shorter-than-expected        
+          authentication tag. This can be abused by an attacker to spoof ciphertexts or recover the implicit
+          authentication key of GCM, allowing arbitrary forgeries.                                          
+          Details: https://sg.run/NbGG1                                                                     
+                                                                                                            
+           67┆ const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
+                                             
+  [36m[22m[24m  src/config/geminiConfig.ts[0m
+   ❯❯❱ [1mgeneric.secrets.security.detected-generic-api-key.detected-generic-api-key[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Generic API Key detected    
+          Details: https://sg.run/qxj8
+                                      
+           22┆ API_KEY = 'REDACTED_API_KEY';
+                                                    
+  [36m[22m[24m  src/screens/auth/SignInScreen.tsx[0m
+   ❯❯❱ [1mgeneric.secrets.security.detected-generic-api-key.detected-generic-api-key[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Generic API Key detected    
+          Details: https://sg.run/qxj8
+                                      
+           25┆ api_key: 'REDACTED_API_KEY' // Stored for reference
+                                                
+  [36m[22m[24m  src/services/geminiService.ts[0m
+    ❯❱ [1mjavascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          RegExp() called with a `key` function argument, this might allow an attacker to cause a Regular     
+          Expression Denial-of-Service (ReDoS) within your application as RegExP blocks the main thread. For  
+          this reason, it is recommended to use hardcoded regexes instead. If your regex is run on user-      
+          controlled input, consider performing input validation or use a regex checking/sanitization library 
+          such as https://www.npmjs.com/package/recheck to verify that the regex does not appear vulnerable to
+          ReDoS.                                                                                              
+          Details: https://sg.run/gr65                                                                        
+                                                                                                              
+          127┆ const match = briefText.match(new RegExp(`${key}:\\s*(.+)`, 'i'));
