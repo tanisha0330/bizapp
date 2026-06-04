@@ -19,13 +19,13 @@
         "CFBundleURLTypes": [
           {
             "CFBundleURLSchemes": [
-              "fb1065859666601001",
+              "",
               "biz499"
             ]
           }
         ],
-        "FacebookAppID": "1065859666601001",
-        "FacebookClientToken": "YOUR_CLIENT_TOKEN_HERE",
+        "FacebookAppID": "",
+        "FacebookClientToken": "",
         "FacebookDisplayName": "Biz499"
       }
     },
@@ -84,15 +84,15 @@
       [
         "react-native-fbsdk-next",
         {
-          "appID": "1065859666601001",
-          "clientToken": "53277e4cb67c8b033c9c6b97cadf61b3",
+          "appID": "",
+          "clientToken": "",
           "displayName": "Biz499"
         }
       ]
     ],
     "extra": {
       "eas": {
-        "projectId": "36e01f33-093c-4c7f-8c3e-ba2f230389b9"
+        "projectId": ""
       }
     },
     "owner": "tanisha031104"
