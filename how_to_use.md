@@ -62,6 +62,7 @@ A step-by-step, intuitive multi-step form to generate new ads.
 - **Step 2**: Fill in your ad copy (Headline, Description).
 - **Step 3**: Upload or select images using the built-in image picker.
 - **Step 4**: Review your ad and publish/save it.
+( this version can create ads only, cannot publish them on facebook , publishing on facebook requires additonal permission from facebook and backend configuration)
 
 ### Managing Ads
 Navigate to the Ads section to see all the campaigns you've created.
